@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --background: 280 60% 5%;
+    --foreground: 300 100% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    --card: 270 50% 10%;
+    --card-foreground: 315 100% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
+    --popover: 280 60% 5%;
+    --popover-foreground: 300 100% 98%;
 
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
+    --primary: 320 100% 60%;
+    --primary-foreground: 300 100% 98%;
 
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 300 100% 98%;
 
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
+    --muted: 270 50% 20%;
+    --muted-foreground: 300 70% 90%;
 
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
+    --accent: 225 100% 60%;
+    --accent-foreground: 300 100% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 300 100% 98%;
 
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
+    --border: 270 50% 30%;
+    --input: 270 50% 20%;
+    --ring: 320 100% 60%;
 
     --radius: 0.5rem;
   }
@@ -72,5 +72,17 @@
   }
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(45deg, hsl(280 60% 5%), hsl(320 70% 10%));
+    min-height: 100vh;
+  }
+  
+  input, button {
+    backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, hsla(270, 100%, 20%, 0.4), hsla(320, 100%, 20%, 0.2)) !important;
+    border: 1px solid hsla(320, 100%, 60%, 0.3) !important;
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, hsla(270, 100%, 30%, 0.6), hsla(320, 100%, 30%, 0.4)) !important;
   }
 }
