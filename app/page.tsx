@@ -43,13 +43,13 @@ export default function Page() {
           <GitHubLogoIcon className="size-5 text-stone-400" />
         </div>
         <Input
-          type="url"
-          name="url"
+          type="text"
+          name="input"
           value={input}
           onChange={handleInputChange}
           required
           disabled={isLoading}
-          placeholder="Enter public GitHub repository URL"
+          placeholder="Enter text"
           className="text-lg rounded-full px-4 pl-12 h-12 transition-all bg-stone-900"
         />
         <Button
