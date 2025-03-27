@@ -1,2 +1,2 @@
-export const PROJECT_NAME = "Unreleased";
-export const PROMPT_SLUG = "generate-changelog";
+export const PROJECT_NAME = "Spotify";
+export const PROMPT_SLUG = "getpineconedocs-fbca";
