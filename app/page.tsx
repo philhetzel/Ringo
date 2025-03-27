@@ -56,7 +56,7 @@ export default function Page() {
           size="lg"
           type="submit"
           disabled={isLoading}
-          className="h-12 rounded-full text-lg font-medium bg-slate-200 transition-colors"
+          className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
         >
           Submit
         </Button>
@@ -76,30 +76,7 @@ export default function Page() {
         <div className="text-base prose prose-stone prose-sm prose-invert">
           <Markdown>{completion}</Markdown>
         </div>
-      ) : (
-        <div className="flex flex-wrap gap-2">
-          <SampleRepo slug="microsoft/typescript" onClick={onClickSampleRepo} />
-          <SampleRepo slug="facebook/react" onClick={onClickSampleRepo} />
-          <SampleRepo slug="vercel/next.js" onClick={onClickSampleRepo} />
-        </div>
-      )}
+      ) : null}
     </div>
   );
 }
-
-const SampleRepo = ({
-  slug,
-  onClick,
-}: {
-  slug: string;
-  onClick: (url: string) => void;
-}) => (
-  <Button
-    variant="outline"
-    className="text-stone-300 gap-2"
-    onClick={() => onClick(`https://github.com/${slug}`)}
-  >
-    {slug}
-    <span className="text-stone-500">{"->"}</span>
-  </Button>
-);

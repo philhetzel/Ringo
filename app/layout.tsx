@@ -27,10 +27,10 @@ export default function RootLayout({
         <main className="flex min-h-screen flex-col px-6">
           <div className="max-w-screen-sm w-full mx-auto text-xl pt-24">
             <h1 className="text-amber-300 font-mono font-semibold">
-              Unreleased AI
+              Ringo
             </h1>
             <p className="text-balance text-base text-stone-300 mb-8">
-              Generate a changelog since the last GitHub release
+              What kind of playlist do you want?
             </p>
             {children}
             <a
