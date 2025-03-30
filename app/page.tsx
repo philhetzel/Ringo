@@ -34,7 +34,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col gap-8 mb-8 max-w-2xl mx-auto w-full px-4 animate-fade-in">
+    <div className="flex flex-col gap-8 mb-8">
       <form
         className="flex flex-col sm:flex-row gap-2 relative"
         onSubmit={handleSubmit}

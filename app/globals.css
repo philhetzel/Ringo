@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 210 50% 15%; /* Softer background color */
-    --foreground: 200 100% 95%; /* Slightly higher contrast foreground */
+    --background: 280 60% 12%;
+    --foreground: 300 100% 98%;
 
-    --card: 220 40% 20%; /* Warmer card color */
-    --card-foreground: 210 100% 95%; /* More contrast for card text */
+    --card: 270 50% 16%;
+    --card-foreground: 315 100% 98%;
 
-    --popover: 210 50% 15%; /* Consistent popover color */
-    --popover-foreground: 200 100% 95%; /* Consistent popover text */
+    --popover: 280 60% 12%;
+    --popover-foreground: 300 100% 98%;
 
-    --primary: 200 100% 60%; /* Less saturated primary */
-    --primary-foreground: 200 100% 95%; /* Consistent primary text */
+    --primary: 320 100% 70%;
+    --primary-foreground: 300 100% 98%;
 
-    --secondary: 190 100% 50%; /* Less saturated secondary */
-    --secondary-foreground: 200 100% 95%; /* Consistent secondary text */
+    --secondary: 190 100% 60%;
+    --secondary-foreground: 300 100% 98%;
 
-    --muted: 210 40% 35%; /* More muted color */
-    --muted-foreground: 200 70% 90%; /* Softer muted text */
+    --muted: 270 50% 30%;
+    --muted-foreground: 300 70% 98%;
 
-    --accent: 225 100% 55%; /* Less saturated accent */
-    --accent-foreground: 200 100% 95%; /* Consistent accent text */
+    --accent: 225 100% 70%;
+    --accent-foreground: 300 100% 98%;
 
-    --destructive: 0 80% 50%; /* More muted destructive */
-    --destructive-foreground: 200 100% 95%; /* Consistent destructive text */
+    --destructive: 0 100% 70%;
+    --destructive-foreground: 300 100% 98%;
 
-    --border: 210 40% 45%; /* Lighter border */
-    --input: 210 40% 35%; /* Softer input background */
-    --ring: 200 100% 60%; /* Less saturated ring */
+    --border: 270 50% 40%;
+    --input: 270 50% 30%;
+    --ring: 320 100% 70%;
 
-    --radius: 0.75rem; /* Slightly larger radius */
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 10% 5%; /* Darker background */
-    --foreground: 60 9% 98%; /* Lighter foreground */
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
 
-    --card: 20 10% 5%; /* Darker card */
-    --card-foreground: 60 9% 98%; /* Lighter card text */
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
 
-    --popover: 20 10% 5%; /* Darker popover */
-    --popover-foreground: 60 9% 98%; /* Lighter popover text */
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
 
-    --primary: 60 10% 90%; /* Lighter primary */
-    --primary-foreground: 24 9% 10%; /* Darker primary text */
+    --primary: 60 9.1% 97.8%;
+    --primary-foreground: 24 9.8% 10%;
 
-    --secondary: 12 6% 15%; /* Darker secondary */
-    --secondary-foreground: 60 9% 98%; /* Lighter secondary text */
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
 
-    --muted: 12 6% 15%; /* Darker muted */
-    --muted-foreground: 24 5% 64%; /* Lighter muted text */
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
 
-    --accent: 12 6% 15%; /* Darker accent */
-    --accent-foreground: 60 9% 98%; /* Lighter accent text */
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
 
-    --destructive: 0 60% 30%; /* Darker destructive */
-    --destructive-foreground: 60 9% 98%; /* Lighter destructive text */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
 
-    --border: 12 6% 15%; /* Darker border */
-    --input: 12 6% 15%; /* Darker input */
-    --ring: 24 5% 83%; /* Lighter ring */
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
   }
 }
 
@@ -72,21 +72,17 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(45deg, hsl(var(--background)), hsl(var(--primary))); /* Using CSS variables */
+    background: linear-gradient(45deg, hsl(280 60% 5%), hsl(320 70% 10%));
     min-height: 100vh;
-    font-family: sans-serif; /* Added font-family for better readability */
   }
-
+  
   input, button {
     backdrop-filter: blur(8px);
-    background: linear-gradient(135deg, hsla(var(--input), 0.4), hsla(var(--primary), 0.2)) !important;
-    border: 1px solid hsla(var(--primary), 0.3) !important;
-    padding: 10px 20px;
-    border-radius: var(--radius); /* Using CSS variable for radius */
-    font-family: inherit; /* Inheriting font-family for consistency */
+    background: linear-gradient(135deg, hsla(270, 100%, 20%, 0.4), hsla(320, 100%, 20%, 0.2)) !important;
+    border: 1px solid hsla(320, 100%, 60%, 0.3) !important;
   }
-
+  
   button:hover {
-    background: linear-gradient(135deg, hsla(var(--input), 0.6), hsla(var(--primary), 0.4)) !important;
+    background: linear-gradient(135deg, hsla(270, 100%, 30%, 0.6), hsla(320, 100%, 30%, 0.4)) !important;
   }
 }
