@@ -35,6 +35,8 @@ jobs:
       - name: Install Dependencies
         id: install
         run: pnpm install
+        with:
+          api_key: ${{ secrets.BRAINTRUST_API_KEY }}
 
       - name: Run Evals
         uses: braintrustdata/eval-action@v1
