@@ -40,7 +40,7 @@ export default function RootLayout({
             >
               Powered by
               <Image
-                src="/icon180.png"
+                src="/logo.png"
                 alt="Braintrust Logo"
                 width={116}
                 height={12}

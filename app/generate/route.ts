@@ -5,9 +5,6 @@ import { PROJECT_NAME, PROMPT_SLUG } from "@/lib/constants";
 const logger = initLogger({
   projectName: PROJECT_NAME,
   apiKey: process.env.BRAINTRUST_API_KEY,
-  // It is safe to set the "asyncFlush" flag to true in Vercel environments
-  // because Braintrust calls waitUntil() automatically behind the scenes to
-  // ensure your logs are flushed properly.
   asyncFlush: true,
 });
 
