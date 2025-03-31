@@ -21,6 +21,15 @@ export default function Page() {
     api: "/generate",
   });
 
+  const {
+    handleSubmit: handleDocSearch,
+    error: docError,
+    completion: docCompletion,
+    isLoading: isDocLoading,
+  } = useCompletion({
+    api: "/doc_search",
+  });
+
   const [sampleRepoUrl, setSampleRepoUrl] = useState<string | null>(null);
   useEffect(() => {
     if (!sampleRepoUrl) return;
@@ -52,29 +61,40 @@ export default function Page() {
           placeholder="Enter text"
           className="text-lg rounded-full px-4 pl-12 h-12 transition-all bg-stone-900"
         />
-        <Button
-          size="lg"
-          type="submit"
-          disabled={isLoading}
-          className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
-        >
-          Submit
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            size="lg"
+            type="submit"
+            disabled={isLoading || isDocLoading}
+            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
+          >
+            Submit
+          </Button>
+          <Button
+            size="lg"
+            type="button"
+            onClick={() => handleDocSearch(undefined, { input })}
+            disabled={isLoading || isDocLoading}
+            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
+          >
+            Get Docs
+          </Button>
+        </div>
       </form>
-      {isLoading && completion.trim() === "" ? (
+      {(isLoading || isDocLoading) && completion.trim() === "" && docCompletion.trim() === "" ? (
         <div className="space-y-2">
           <Skeleton className="h-12 w-[550px]" />
           <Skeleton className="h-12 w-[500px]" />
           <Skeleton className="h-12 w-[520px]" />
           <Skeleton className="h-12 w-[480px]" />
         </div>
-      ) : error ? (
+      ) : error || docError ? (
         <div className="bg-rose-950 px-4 rounded-md py-2 text-base text-rose-200">
-          {error.message}
+          {(error || docError)?.message}
         </div>
-      ) : completion ? (
+      ) : completion || docCompletion ? (
         <div className="text-base prose prose-stone prose-sm prose-invert">
-          <Markdown>{completion}</Markdown>
+          <Markdown>{completion || docCompletion}</Markdown>
         </div>
       ) : null}
     </div>
