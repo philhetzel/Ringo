@@ -66,17 +66,11 @@ export default function Page() {
           </Button>
           <Button
             size="lg"
-            onClick={async (e) => {
+            onClick={(e) => {
               e.preventDefault();
-              const response = await fetch('/doc_search', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt: input })
-              });
-              const data = await response.json();
-              console.log('Doc search response:', data);
+              handleDocSearch(e);
             }}
-            disabled={isLoading}
+            disabled={isLoading || isDocLoading}
             className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
           >
             Search
