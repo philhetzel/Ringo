@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -22,21 +21,13 @@ export default function Page() {
     api: "/generate",
   });
 
-  const {
-    completion: docCompletion,
-    handleSubmit: handleDocSearch,
-    error: docError,
-    isLoading: isDocLoading
-  } = useCompletion({
-    api: "/doc_search",
-  });
-
   return (
     <div className="flex flex-col gap-8 mb-8">
       <form
         className="flex flex-col sm:flex-row gap-2 relative"
         onSubmit={(e) => {
           e.preventDefault();
+          handleSubmit(e);
         }}
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
@@ -48,49 +39,35 @@ export default function Page() {
           value={input}
           onChange={handleInputChange}
           required
-          disabled={isLoading || isDocLoading}
+          disabled={isLoading}
           placeholder="Enter text"
           className="text-lg rounded-full px-4 pl-12 h-12 transition-all bg-stone-900"
         />
         <div className="flex gap-2">
           <Button
             size="lg"
-            onClick={(e) => {
-              e.preventDefault();
-              handleSubmit(e);
-            }}
-            disabled={isLoading || isDocLoading}
+            type="submit"
+            disabled={isLoading}
             className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
           >
             Generate
           </Button>
-          <Button
-            size="lg"
-            onClick={(e) => {
-              e.preventDefault();
-              handleDocSearch(e);
-            }}
-            disabled={isLoading || isDocLoading}
-            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
-          >
-            Search
-          </Button>
         </div>
       </form>
-      {(isLoading || isDocLoading) && completion.trim() === "" && docCompletion.trim() === "" ? (
+      {isLoading && completion.trim() === "" ? (
         <div className="space-y-2">
           <Skeleton className="h-12 w-[550px]" />
           <Skeleton className="h-12 w-[500px]" />
           <Skeleton className="h-12 w-[520px]" />
           <Skeleton className="h-12 w-[480px]" />
         </div>
-      ) : error || docError ? (
+      ) : error ? (
         <div className="bg-rose-950 px-4 rounded-md py-2 text-base text-rose-200">
-          {(error || docError)?.message}
+          {error.message}
         </div>
-      ) : completion || docCompletion ? (
+      ) : completion ? (
         <div className="text-base prose prose-stone prose-sm prose-invert">
-          <Markdown>{completion || docCompletion}</Markdown>
+          <Markdown>{completion}</Markdown>
         </div>
       ) : null}
     </div>
