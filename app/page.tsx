@@ -21,26 +21,16 @@ export default function Page() {
     api: "/generate",
   });
 
-  const [sampleRepoUrl, setSampleRepoUrl] = useState<string | null>(null);
-  useEffect(() => {
-    if (!sampleRepoUrl) return;
-    handleSubmit();
-    setSampleRepoUrl(null);
-  }, [sampleRepoUrl, handleSubmit]);
-
-  const onClickSampleRepo = (url: string) => {
-    setInput(url);
-    setSampleRepoUrl(url);
-  };
-
   return (
     <div className="flex flex-col gap-8 mb-8">
       <form
         className="flex flex-col sm:flex-row gap-2 relative"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit(e);
+        }}
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <GitHubLogoIcon className="size-5 text-stone-400" />
         </div>
         <Input
           type="text"
@@ -52,14 +42,16 @@ export default function Page() {
           placeholder="Enter text"
           className="text-lg rounded-full px-4 pl-12 h-12 transition-all bg-stone-900"
         />
-        <Button
-          size="lg"
-          type="submit"
-          disabled={isLoading}
-          className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
-        >
-          Submit
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            size="lg"
+            type="submit"
+            disabled={isLoading}
+            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-stone transition-colors"
+          >
+            Generate
+          </Button>
+        </div>
       </form>
       {isLoading && completion.trim() === "" ? (
         <div className="space-y-2">
