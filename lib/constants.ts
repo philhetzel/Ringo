@@ -1,2 +1,2 @@
 export const PROJECT_NAME = "Spotify";
-export const PROMPT_SLUG = "getpineconedocs-v2-f151";
+export const PROMPT_SLUG = "getpineconedocs-fbca";
