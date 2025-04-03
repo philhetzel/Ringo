@@ -1,27 +1,15 @@
 import { VoyageAIClient } from 'voyageai';
 import { Pinecone, ScoredPineconeRecord } from '@pinecone-database/pinecone';
-import { projects } from 'braintrust';
+import * as braintrust from "braintrust";
+import { PROJECT_NAME } from '@/lib/constants';
+import { z } from "zod";
 
-interface Args {
-  query: string;
-}
+const project = braintrust.projects.create({ name: PROJECT_NAME });
 
 interface DocumentOutput {
   artist: string;
   name: string;
   text: string;
-}
-
-interface DocumentOutputs {
-  documents: DocumentOutput[];
-}
-
-interface PineconeMatch {
-  metadata: {
-    artist: string;
-    name: string;
-    text: string;
-  };
 }
 
 async function handler(query: string): Promise<DocumentOutput[]> {
@@ -68,7 +56,15 @@ async function handler(query: string): Promise<DocumentOutput[]> {
   return docs;
 }
 
-// Create Braintrust project and tools
+project.tools.create({
+  handler: handler,
+  name: "Typescript Pinecone Search",
+  slug: "get-pinecone-docs-ts",
+  description:
+    "a way to retrieve and rerank documents from pinecone.",
+  parameters: z.string(),
+  ifExists: "replace",
+});
 
 
 export { handler };

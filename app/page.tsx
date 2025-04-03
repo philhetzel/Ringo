@@ -31,7 +31,6 @@ export default function Page() {
         }}
       >
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <GitHubLogoIcon className="size-5 text-stone-400" />
         </div>
         <Input
           type="text"
@@ -48,7 +47,7 @@ export default function Page() {
             size="lg"
             type="submit"
             disabled={isLoading}
-            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-black transition-colors"
+            className="h-12 rounded-full text-lg font-medium bg-slate-200 text-stone transition-colors"
           >
             Generate
           </Button>

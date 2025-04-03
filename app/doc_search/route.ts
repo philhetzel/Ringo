@@ -1,6 +1,9 @@
-import {handler} from "@/tools/retrieval_tool"
+import { handler } from "@/tools/retrieval_tool";
 
 export async function POST(req: Request) {
-  const { prompt: query } = await req.json();
+  const data = await req.json();
+  console.log(data);
+  const { prompt: query } = data;
   const docs = await handler(query);
+  return docs;
 }
